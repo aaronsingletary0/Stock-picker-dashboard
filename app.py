@@ -43,12 +43,16 @@ with c:
         st.dataframe(x,hide_index=True)
         if len(x) and x.paired.astype(str).str.lower().eq("true").all() and x[["factor","size"]].notna().all().all() and list(x.start.iloc[1:])==list(x.end.iloc[:-1]):
             st.line_chart((1+x.set_index("end")[["factor","size"]]).cumprod())
-    st.caption("Historical issuer identity and corporate actions remain unverified.")
+    st.subheader("Risk-adjusted performance")
+    risk=load("risk.csv",["index","n","frequency","strategy","cagr","volatility","sharpe","period_end_drawdown"])
+    if risk is not None:
+        st.dataframe(risk,hide_index=True,column_config={k:st.column_config.NumberColumn(format="percent") for k in ("cagr","volatility","period_end_drawdown")})
+    st.caption("Sharpe assumes zero risk-free rate. Drawdown uses period endpoints, not daily prices. Historical issuer identity and corporate actions remain unverified.")
 with d:
     st.error("Validated portfolio publication remains restricted.")
     st.caption("Minimum exploratory coverage: 70%.")
     p=root/"status.json"
     if p.exists():
         s=json.loads(p.read_text())
-        st.json({k:s[k] for k in ("as_of","coverage","status") if k in s})
+        st.json({k:s[k] for k in ("as_of","coverage","status","exports") if k in s})
     else: st.info("No approved public evidence snapshot available.")
