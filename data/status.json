@@ -1,0 +1,19 @@
+{
+  "as_of": "2026-11-26T23:01:08.046531+00:00",
+  "status": "exploratory_only",
+  "coverage": {},
+  "exports": {
+    "portfolios.csv": {
+      "rows": 0,
+      "status": "blocked"
+    },
+    "rebalance.csv": {
+      "rows": 0,
+      "status": "empty"
+    },
+    "returns.csv": {
+      "rows": 282,
+      "status": "available"
+    }
+  }
+}
