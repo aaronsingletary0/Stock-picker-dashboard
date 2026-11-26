@@ -1,11 +1,14 @@
 {
-  "as_of": "2026-11-26T23:09:50.694698+00:00",
+  "as_of": "2026-11-26T23:11:12.753511+00:00",
   "status": "exploratory_only",
-  "coverage": {},
+  "coverage": {
+    "nasdaq100": 0.7878787878787878,
+    "sp500": 0.6533066132264529
+  },
   "exports": {
     "portfolios.csv": {
-      "rows": 0,
-      "status": "blocked"
+      "rows": 80,
+      "status": "available"
     },
     "rebalance.csv": {
       "rows": 0,
